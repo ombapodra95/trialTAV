@@ -1,0 +1,966 @@
+{
+  "version": "2.6",
+  "summary": {
+    "title": "HelixPay Customer Payment Data - STRIDE Threat Model",
+    "owner": "Academic threat modeling exercise",
+    "description": "Conceptual Threat Dragon STRIDE model reconstructed from user-supplied attack tree. All links and threats require validation; Critical labels represented with score because Threat Dragon severity supports High/Medium/Low."
+  },
+  "detail": {
+    "contributors": [],
+    "reviewer": "Pending review",
+    "diagrams": [
+      {
+        "title": "HelixPay Payment System - Level 1 DFD",
+        "thumbnail": "",
+        "diagramType": "STRIDE",
+        "id": 0,
+        "version": "2.6",
+        "size": {
+          "width": 1700,
+          "height": 650
+        },
+        "diagramJson": {
+          "cells": [
+            {
+              "type": "tm.Actor",
+              "size": {
+                "width": 185,
+                "height": 84
+              },
+              "position": {
+                "x": 40,
+                "y": 180
+              },
+              "angle": 0,
+              "id": "38ad5f94-f8ad-4212-8af2-6b627a3ba5d3",
+              "z": 1,
+              "threats": [],
+              "hasOpenThreats": false,
+              "outOfScope": false,
+              "description": "Customers",
+              "attrs": {
+                ".element-shape": {
+                  "class": "element-shape hasNoOpenThreats isInScope"
+                },
+                "text": {
+                  "text": "Customers"
+                },
+                ".element-text": {
+                  "class": "element-text isInScope"
+                }
+              }
+            },
+            {
+              "type": "tm.Actor",
+              "size": {
+                "width": 185,
+                "height": 84
+              },
+              "position": {
+                "x": 40,
+                "y": 430
+              },
+              "angle": 0,
+              "id": "4fcac406-137c-4152-8249-7204542a7e2f",
+              "z": 2,
+              "threats": [],
+              "hasOpenThreats": false,
+              "outOfScope": false,
+              "description": "Administrators",
+              "attrs": {
+                ".element-shape": {
+                  "class": "element-shape hasNoOpenThreats isInScope"
+                },
+                "text": {
+                  "text": "Administrators"
+                },
+                ".element-text": {
+                  "class": "element-text isInScope"
+                }
+              }
+            },
+            {
+              "type": "tm.Process",
+              "size": {
+                "width": 185,
+                "height": 84
+              },
+              "position": {
+                "x": 320,
+                "y": 110
+              },
+              "angle": 0,
+              "id": "327656db-2a6a-42a1-be11-5b75e58db29a",
+              "z": 3,
+              "threats": [
+                {
+                  "number": 1,
+                  "threatId": "320e415f-d540-4a7f-976a-6fb09c57645d",
+                  "title": "Customer phishing and impersonation",
+                  "type": "Spoofing",
+                  "modelType": "STRIDE",
+                  "description": "Customer credentials are stolen through phishing, permitting account impersonation.",
+                  "mitigation": "Use phishing-resistant MFA, suspicious sign-in detection and secure session handling.",
+                  "severity": "High",
+                  "status": "Open",
+                  "score": "High"
+                }
+              ],
+              "hasOpenThreats": true,
+              "outOfScope": false,
+              "description": "Web / Mobile App",
+              "attrs": {
+                ".element-shape": {
+                  "class": "element-shape hasOpenThreats isInScope"
+                },
+                "text": {
+                  "text": "Web / Mobile App"
+                },
+                ".element-text": {
+                  "class": "element-text isInScope"
+                }
+              }
+            },
+            {
+              "type": "tm.Process",
+              "size": {
+                "width": 185,
+                "height": 84
+              },
+              "position": {
+                "x": 590,
+                "y": 110
+              },
+              "angle": 0,
+              "id": "286928d3-5e2e-469d-a715-b05344bdc927",
+              "z": 4,
+              "threats": [
+                {
+                  "number": 2,
+                  "threatId": "67952be8-4233-4a44-a553-d7e329fdb2b5",
+                  "title": "API authorization bypass",
+                  "type": "Elevation of privilege",
+                  "modelType": "STRIDE",
+                  "description": "An API request could access other customer records if object-level authorization is missing.",
+                  "mitigation": "Enforce object-level authorization and conduct API access-control tests.",
+                  "severity": "High",
+                  "status": "Open",
+                  "score": "High"
+                }
+              ],
+              "hasOpenThreats": true,
+              "outOfScope": false,
+              "description": "API Gateway",
+              "attrs": {
+                ".element-shape": {
+                  "class": "element-shape hasOpenThreats isInScope"
+                },
+                "text": {
+                  "text": "API Gateway"
+                },
+                ".element-text": {
+                  "class": "element-text isInScope"
+                }
+              }
+            },
+            {
+              "type": "tm.Process",
+              "size": {
+                "width": 185,
+                "height": 84
+              },
+              "position": {
+                "x": 590,
+                "y": 350
+              },
+              "angle": 0,
+              "id": "b73f1dcb-7300-4ca7-a056-cb2f6f2d1eea",
+              "z": 5,
+              "threats": [
+                {
+                  "number": 8,
+                  "threatId": "1bb6919b-62a6-4175-8e93-897fbaa3d54c",
+                  "title": "Public staging API exposure",
+                  "type": "Information disclosure",
+                  "modelType": "STRIDE",
+                  "description": "Staging systems may expose credentials or sensitive data when internet accessible.",
+                  "mitigation": "Restrict access, remove production data, separate credentials and networks.",
+                  "severity": "High",
+                  "status": "Open",
+                  "score": "High"
+                }
+              ],
+              "hasOpenThreats": true,
+              "outOfScope": false,
+              "description": "Staging API",
+              "attrs": {
+                ".element-shape": {
+                  "class": "element-shape hasOpenThreats isInScope"
+                },
+                "text": {
+                  "text": "Staging API"
+                },
+                ".element-text": {
+                  "class": "element-text isInScope"
+                }
+              }
+            },
+            {
+              "type": "tm.Process",
+              "size": {
+                "width": 185,
+                "height": 84
+              },
+              "position": {
+                "x": 320,
+                "y": 420
+              },
+              "angle": 0,
+              "id": "403bdbbd-1422-4438-913d-a6402cbb0c12",
+              "z": 6,
+              "threats": [
+                {
+                  "number": 5,
+                  "threatId": "f845043d-b66b-4422-ab49-a6f8d4d7b7b6",
+                  "title": "Weak MFA on 15 administrator accounts",
+                  "type": "Spoofing",
+                  "modelType": "STRIDE",
+                  "description": "Administrator accounts may be compromised if MFA is inconsistently applied. Fifteen accounts are indicated in the board, not independently verified.",
+                  "mitigation": "Verify all privileged identities, enforce phishing-resistant MFA, review admin privileges.",
+                  "severity": "High",
+                  "status": "Open",
+                  "score": "Critical"
+                },
+                {
+                  "number": 6,
+                  "threatId": "610a620a-8818-4aa5-bd3a-27f6a090d6a3",
+                  "title": "MITM and token interception",
+                  "type": "Information disclosure",
+                  "modelType": "STRIDE",
+                  "description": "Insecure transport or token handling could expose credentials or sessions.",
+                  "mitigation": "TLS everywhere, certificate validation, secure tokens and cookies.",
+                  "severity": "High",
+                  "status": "Open",
+                  "score": "High"
+                }
+              ],
+              "hasOpenThreats": true,
+              "outOfScope": false,
+              "description": "Identity / MFA",
+              "attrs": {
+                ".element-shape": {
+                  "class": "element-shape hasOpenThreats isInScope"
+                },
+                "text": {
+                  "text": "Identity / MFA"
+                },
+                ".element-text": {
+                  "class": "element-text isInScope"
+                }
+              }
+            },
+            {
+              "type": "tm.Process",
+              "size": {
+                "width": 185,
+                "height": 84
+              },
+              "position": {
+                "x": 870,
+                "y": 110
+              },
+              "angle": 0,
+              "id": "1e70f3b6-6850-4efa-b68c-17f3479474e4",
+              "z": 7,
+              "threats": [
+                {
+                  "number": 7,
+                  "threatId": "a7788ac2-dce3-43da-bffd-7b283a97370f",
+                  "title": "Lateral movement across microservices",
+                  "type": "Elevation of privilege",
+                  "modelType": "STRIDE",
+                  "description": "Compromise of a service could lead to unauthorized database access if segmentation is weak.",
+                  "mitigation": "Segment services, enforce mutual authentication and least-privilege database access.",
+                  "severity": "High",
+                  "status": "Open",
+                  "score": "High"
+                }
+              ],
+              "hasOpenThreats": true,
+              "outOfScope": false,
+              "description": "Microservices",
+              "attrs": {
+                ".element-shape": {
+                  "class": "element-shape hasOpenThreats isInScope"
+                },
+                "text": {
+                  "text": "Microservices"
+                },
+                ".element-text": {
+                  "class": "element-text isInScope"
+                }
+              }
+            },
+            {
+              "type": "tm.Process",
+              "size": {
+                "width": 185,
+                "height": 84
+              },
+              "position": {
+                "x": 1140,
+                "y": 110
+              },
+              "angle": 0,
+              "id": "9ef92f52-18ca-43b8-9f2e-49968ccdd88b",
+              "z": 8,
+              "threats": [
+                {
+                  "number": 3,
+                  "threatId": "c09c00bf-6777-4086-8170-f4b2209f732d",
+                  "title": "Log4j vulnerability on payment server",
+                  "type": "Elevation of privilege",
+                  "modelType": "STRIDE",
+                  "description": "An exploitable Log4j component could permit remote code execution if affected versions and conditions are present.",
+                  "mitigation": "Inventory dependencies, patch affected versions, filter exposure and monitor execution.",
+                  "severity": "High",
+                  "status": "Open",
+                  "score": "Critical"
+                }
+              ],
+              "hasOpenThreats": true,
+              "outOfScope": false,
+              "description": "Payment Server",
+              "attrs": {
+                ".element-shape": {
+                  "class": "element-shape hasOpenThreats isInScope"
+                },
+                "text": {
+                  "text": "Payment Server"
+                },
+                ".element-text": {
+                  "class": "element-text isInScope"
+                }
+              }
+            },
+            {
+              "type": "tm.Store",
+              "size": {
+                "width": 185,
+                "height": 84
+              },
+              "position": {
+                "x": 1410,
+                "y": 110
+              },
+              "angle": 0,
+              "id": "a4aa4ae4-f0d8-4a83-8e9c-12d2aa87f4db",
+              "z": 9,
+              "threats": [
+                {
+                  "number": 10,
+                  "threatId": "f30ededa-58d1-44a5-8cf1-de0e93d52149",
+                  "title": "Publicly accessible payment data",
+                  "type": "Information disclosure",
+                  "modelType": "STRIDE",
+                  "description": "Incorrectly exposed cloud database or storage could leak customer payment records.",
+                  "mitigation": "Private endpoints, block public access, encrypt, monitor and restrict permissions.",
+                  "severity": "High",
+                  "status": "Open",
+                  "score": "Critical"
+                }
+              ],
+              "hasOpenThreats": true,
+              "outOfScope": false,
+              "description": "Payment Database",
+              "attrs": {
+                ".element-shape": {
+                  "class": "element-shape hasOpenThreats isInScope"
+                },
+                "text": {
+                  "text": "Payment Database"
+                },
+                ".element-text": {
+                  "class": "element-text isInScope"
+                }
+              }
+            },
+            {
+              "type": "tm.Process",
+              "size": {
+                "width": 185,
+                "height": 84
+              },
+              "position": {
+                "x": 870,
+                "y": 420
+              },
+              "angle": 0,
+              "id": "0b8c5474-65c0-43fa-af30-bba112a222a5",
+              "z": 10,
+              "threats": [
+                {
+                  "number": 4,
+                  "threatId": "44d186a3-84d4-4f2d-b4b5-bffb9f09d01b",
+                  "title": "CI/CD account privilege escalation",
+                  "type": "Elevation of privilege",
+                  "modelType": "STRIDE",
+                  "description": "Compromised Jenkins credentials or pipeline permissions could lead to production compromise.",
+                  "mitigation": "Separate CI/CD privileges, secure secrets, approve deployments, monitor activity.",
+                  "severity": "High",
+                  "status": "Open",
+                  "score": "High"
+                }
+              ],
+              "hasOpenThreats": true,
+              "outOfScope": false,
+              "description": "Jenkins CI/CD",
+              "attrs": {
+                ".element-shape": {
+                  "class": "element-shape hasOpenThreats isInScope"
+                },
+                "text": {
+                  "text": "Jenkins CI/CD"
+                },
+                ".element-text": {
+                  "class": "element-text isInScope"
+                }
+              }
+            },
+            {
+              "type": "tm.Store",
+              "size": {
+                "width": 185,
+                "height": 84
+              },
+              "position": {
+                "x": 1410,
+                "y": 420
+              },
+              "angle": 0,
+              "id": "692ff931-86c8-4575-87d3-662d554ecffd",
+              "z": 11,
+              "threats": [
+                {
+                  "number": 9,
+                  "threatId": "af779185-65b0-41eb-862e-fc0278964810",
+                  "title": "Cloud/IAM security misconfiguration",
+                  "type": "Tampering",
+                  "modelType": "STRIDE",
+                  "description": "Incorrect IAM or network settings could allow unauthorized changes.",
+                  "mitigation": "Cloud security posture management, hardened baselines and IAM reviews.",
+                  "severity": "High",
+                  "status": "Open",
+                  "score": "High"
+                }
+              ],
+              "hasOpenThreats": true,
+              "outOfScope": false,
+              "description": "AWS Cloud Storage",
+              "attrs": {
+                ".element-shape": {
+                  "class": "element-shape hasOpenThreats isInScope"
+                },
+                "text": {
+                  "text": "AWS Cloud Storage"
+                },
+                ".element-text": {
+                  "class": "element-text isInScope"
+                }
+              }
+            },
+            {
+              "type": "tm.Flow",
+              "size": {
+                "width": 10,
+                "height": 10
+              },
+              "smooth": true,
+              "source": {
+                "id": "38ad5f94-f8ad-4212-8af2-6b627a3ba5d3"
+              },
+              "target": {
+                "id": "327656db-2a6a-42a1-be11-5b75e58db29a"
+              },
+              "id": "d9da1dbc-ee94-47b3-a80b-508c1d4d3d0f",
+              "z": 50,
+              "labels": [
+                {
+                  "position": 0.5,
+                  "attrs": {
+                    "text": {
+                      "text": "HTTPS customer requests",
+                      "font-weight": "400",
+                      "font-size": "small"
+                    }
+                  }
+                }
+              ],
+              "hasOpenThreats": false,
+              "isEncrypted": false,
+              "description": "Conceptual flow; transport encryption and existence must be verified.",
+              "attrs": {
+                ".marker-target": {
+                  "class": "marker-target hasNoOpenThreats isInScope"
+                },
+                ".connection": {
+                  "class": "connection hasNoOpenThreats isInScope"
+                }
+              }
+            },
+            {
+              "type": "tm.Flow",
+              "size": {
+                "width": 10,
+                "height": 10
+              },
+              "smooth": true,
+              "source": {
+                "id": "327656db-2a6a-42a1-be11-5b75e58db29a"
+              },
+              "target": {
+                "id": "286928d3-5e2e-469d-a715-b05344bdc927"
+              },
+              "id": "358f7d63-6dca-41a6-88da-502a9f02ed63",
+              "z": 51,
+              "labels": [
+                {
+                  "position": 0.5,
+                  "attrs": {
+                    "text": {
+                      "text": "Authenticated API calls",
+                      "font-weight": "400",
+                      "font-size": "small"
+                    }
+                  }
+                }
+              ],
+              "hasOpenThreats": false,
+              "isEncrypted": false,
+              "description": "Conceptual flow; transport encryption and existence must be verified.",
+              "attrs": {
+                ".marker-target": {
+                  "class": "marker-target hasNoOpenThreats isInScope"
+                },
+                ".connection": {
+                  "class": "connection hasNoOpenThreats isInScope"
+                }
+              }
+            },
+            {
+              "type": "tm.Flow",
+              "size": {
+                "width": 10,
+                "height": 10
+              },
+              "smooth": true,
+              "source": {
+                "id": "4fcac406-137c-4152-8249-7204542a7e2f"
+              },
+              "target": {
+                "id": "403bdbbd-1422-4438-913d-a6402cbb0c12"
+              },
+              "id": "e83cdb83-ec92-429b-bc32-7fdc6ad005b6",
+              "z": 52,
+              "labels": [
+                {
+                  "position": 0.5,
+                  "attrs": {
+                    "text": {
+                      "text": "Administrator login",
+                      "font-weight": "400",
+                      "font-size": "small"
+                    }
+                  }
+                }
+              ],
+              "hasOpenThreats": false,
+              "isEncrypted": false,
+              "description": "Conceptual flow; transport encryption and existence must be verified.",
+              "attrs": {
+                ".marker-target": {
+                  "class": "marker-target hasNoOpenThreats isInScope"
+                },
+                ".connection": {
+                  "class": "connection hasNoOpenThreats isInScope"
+                }
+              }
+            },
+            {
+              "type": "tm.Flow",
+              "size": {
+                "width": 10,
+                "height": 10
+              },
+              "smooth": true,
+              "source": {
+                "id": "403bdbbd-1422-4438-913d-a6402cbb0c12"
+              },
+              "target": {
+                "id": "286928d3-5e2e-469d-a715-b05344bdc927"
+              },
+              "id": "c9eefb81-f08f-4530-8a97-6f796f2c43ae",
+              "z": 53,
+              "labels": [
+                {
+                  "position": 0.5,
+                  "attrs": {
+                    "text": {
+                      "text": "Access tokens",
+                      "font-weight": "400",
+                      "font-size": "small"
+                    }
+                  }
+                }
+              ],
+              "hasOpenThreats": false,
+              "isEncrypted": false,
+              "description": "Conceptual flow; transport encryption and existence must be verified.",
+              "attrs": {
+                ".marker-target": {
+                  "class": "marker-target hasNoOpenThreats isInScope"
+                },
+                ".connection": {
+                  "class": "connection hasNoOpenThreats isInScope"
+                }
+              }
+            },
+            {
+              "type": "tm.Flow",
+              "size": {
+                "width": 10,
+                "height": 10
+              },
+              "smooth": true,
+              "source": {
+                "id": "286928d3-5e2e-469d-a715-b05344bdc927"
+              },
+              "target": {
+                "id": "1e70f3b6-6850-4efa-b68c-17f3479474e4"
+              },
+              "id": "d9fde1b2-376f-49bc-a5ff-4a797a77e301",
+              "z": 54,
+              "labels": [
+                {
+                  "position": 0.5,
+                  "attrs": {
+                    "text": {
+                      "text": "Internal service requests",
+                      "font-weight": "400",
+                      "font-size": "small"
+                    }
+                  }
+                }
+              ],
+              "hasOpenThreats": false,
+              "isEncrypted": false,
+              "description": "Conceptual flow; transport encryption and existence must be verified.",
+              "attrs": {
+                ".marker-target": {
+                  "class": "marker-target hasNoOpenThreats isInScope"
+                },
+                ".connection": {
+                  "class": "connection hasNoOpenThreats isInScope"
+                }
+              }
+            },
+            {
+              "type": "tm.Flow",
+              "size": {
+                "width": 10,
+                "height": 10
+              },
+              "smooth": true,
+              "source": {
+                "id": "286928d3-5e2e-469d-a715-b05344bdc927"
+              },
+              "target": {
+                "id": "b73f1dcb-7300-4ca7-a056-cb2f6f2d1eea"
+              },
+              "id": "864dc457-2640-408e-bddc-fded5658f563",
+              "z": 55,
+              "labels": [
+                {
+                  "position": 0.5,
+                  "attrs": {
+                    "text": {
+                      "text": "Staging requests (environment-dependent)",
+                      "font-weight": "400",
+                      "font-size": "small"
+                    }
+                  }
+                }
+              ],
+              "hasOpenThreats": false,
+              "isEncrypted": false,
+              "description": "Conceptual flow; transport encryption and existence must be verified.",
+              "attrs": {
+                ".marker-target": {
+                  "class": "marker-target hasNoOpenThreats isInScope"
+                },
+                ".connection": {
+                  "class": "connection hasNoOpenThreats isInScope"
+                }
+              }
+            },
+            {
+              "type": "tm.Flow",
+              "size": {
+                "width": 10,
+                "height": 10
+              },
+              "smooth": true,
+              "source": {
+                "id": "1e70f3b6-6850-4efa-b68c-17f3479474e4"
+              },
+              "target": {
+                "id": "9ef92f52-18ca-43b8-9f2e-49968ccdd88b"
+              },
+              "id": "15142f87-8499-4125-b26f-1911775b51ee",
+              "z": 56,
+              "labels": [
+                {
+                  "position": 0.5,
+                  "attrs": {
+                    "text": {
+                      "text": "Payment processing",
+                      "font-weight": "400",
+                      "font-size": "small"
+                    }
+                  }
+                }
+              ],
+              "hasOpenThreats": false,
+              "isEncrypted": false,
+              "description": "Conceptual flow; transport encryption and existence must be verified.",
+              "attrs": {
+                ".marker-target": {
+                  "class": "marker-target hasNoOpenThreats isInScope"
+                },
+                ".connection": {
+                  "class": "connection hasNoOpenThreats isInScope"
+                }
+              }
+            },
+            {
+              "type": "tm.Flow",
+              "size": {
+                "width": 10,
+                "height": 10
+              },
+              "smooth": true,
+              "source": {
+                "id": "9ef92f52-18ca-43b8-9f2e-49968ccdd88b"
+              },
+              "target": {
+                "id": "a4aa4ae4-f0d8-4a83-8e9c-12d2aa87f4db"
+              },
+              "id": "4f5af2fa-12d7-4736-87df-2038c920bd4e",
+              "z": 57,
+              "labels": [
+                {
+                  "position": 0.5,
+                  "attrs": {
+                    "text": {
+                      "text": "Read/write payment data",
+                      "font-weight": "400",
+                      "font-size": "small"
+                    }
+                  }
+                }
+              ],
+              "hasOpenThreats": false,
+              "isEncrypted": false,
+              "description": "Conceptual flow; transport encryption and existence must be verified.",
+              "attrs": {
+                ".marker-target": {
+                  "class": "marker-target hasNoOpenThreats isInScope"
+                },
+                ".connection": {
+                  "class": "connection hasNoOpenThreats isInScope"
+                }
+              }
+            },
+            {
+              "type": "tm.Flow",
+              "size": {
+                "width": 10,
+                "height": 10
+              },
+              "smooth": true,
+              "source": {
+                "id": "0b8c5474-65c0-43fa-af30-bba112a222a5"
+              },
+              "target": {
+                "id": "1e70f3b6-6850-4efa-b68c-17f3479474e4"
+              },
+              "id": "41a44cec-4d97-4702-8fde-cb3f7c5dfa94",
+              "z": 58,
+              "labels": [
+                {
+                  "position": 0.5,
+                  "attrs": {
+                    "text": {
+                      "text": "Deployment artifacts",
+                      "font-weight": "400",
+                      "font-size": "small"
+                    }
+                  }
+                }
+              ],
+              "hasOpenThreats": false,
+              "isEncrypted": false,
+              "description": "Conceptual flow; transport encryption and existence must be verified.",
+              "attrs": {
+                ".marker-target": {
+                  "class": "marker-target hasNoOpenThreats isInScope"
+                },
+                ".connection": {
+                  "class": "connection hasNoOpenThreats isInScope"
+                }
+              }
+            },
+            {
+              "type": "tm.Flow",
+              "size": {
+                "width": 10,
+                "height": 10
+              },
+              "smooth": true,
+              "source": {
+                "id": "1e70f3b6-6850-4efa-b68c-17f3479474e4"
+              },
+              "target": {
+                "id": "692ff931-86c8-4575-87d3-662d554ecffd"
+              },
+              "id": "100228a8-4dc2-45ae-867c-2ffebe62d3d0",
+              "z": 59,
+              "labels": [
+                {
+                  "position": 0.5,
+                  "attrs": {
+                    "text": {
+                      "text": "Cloud service access",
+                      "font-weight": "400",
+                      "font-size": "small"
+                    }
+                  }
+                }
+              ],
+              "hasOpenThreats": false,
+              "isEncrypted": false,
+              "description": "Conceptual flow; transport encryption and existence must be verified.",
+              "attrs": {
+                ".marker-target": {
+                  "class": "marker-target hasNoOpenThreats isInScope"
+                },
+                ".connection": {
+                  "class": "connection hasNoOpenThreats isInScope"
+                }
+              }
+            },
+            {
+              "type": "tm.Flow",
+              "size": {
+                "width": 10,
+                "height": 10
+              },
+              "smooth": true,
+              "source": {
+                "id": "692ff931-86c8-4575-87d3-662d554ecffd"
+              },
+              "target": {
+                "id": "a4aa4ae4-f0d8-4a83-8e9c-12d2aa87f4db"
+              },
+              "id": "38444d44-5883-4f96-897c-a51fb1def893",
+              "z": 60,
+              "labels": [
+                {
+                  "position": 0.5,
+                  "attrs": {
+                    "text": {
+                      "text": "Potential data sync (verify)",
+                      "font-weight": "400",
+                      "font-size": "small"
+                    }
+                  }
+                }
+              ],
+              "hasOpenThreats": false,
+              "isEncrypted": false,
+              "description": "Conceptual flow; transport encryption and existence must be verified.",
+              "attrs": {
+                ".marker-target": {
+                  "class": "marker-target hasNoOpenThreats isInScope"
+                },
+                ".connection": {
+                  "class": "connection hasNoOpenThreats isInScope"
+                }
+              }
+            },
+            {
+              "type": "tm.Boundary",
+              "size": {
+                "width": 10,
+                "height": 10
+              },
+              "smooth": false,
+              "source": {
+                "x": 280,
+                "y": 30
+              },
+              "target": {
+                "x": 280,
+                "y": 600
+              },
+              "id": "ad4fa316-fd3a-407e-aff3-a1c16bcea3db",
+              "z": 80,
+              "isTrustBoundary": true,
+              "attrs": {}
+            },
+            {
+              "type": "tm.Boundary",
+              "size": {
+                "width": 10,
+                "height": 10
+              },
+              "smooth": false,
+              "source": {
+                "x": 830,
+                "y": 30
+              },
+              "target": {
+                "x": 830,
+                "y": 600
+              },
+              "id": "62bd3a2e-2fcd-424a-8843-f3080dfffcec",
+              "z": 81,
+              "isTrustBoundary": true,
+              "attrs": {}
+            },
+            {
+              "type": "tm.Boundary",
+              "size": {
+                "width": 10,
+                "height": 10
+              },
+              "smooth": false,
+              "source": {
+                "x": 1370,
+                "y": 30
+              },
+              "target": {
+                "x": 1370,
+                "y": 600
+              },
+              "id": "f9a3609d-d907-4a48-bb93-0ec8362e6bc5",
+              "z": 82,
+              "isTrustBoundary": true,
+              "attrs": {}
+            }
+          ]
+        }
+      }
+    ]
+  }
+}
